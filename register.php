@@ -1,6 +1,6 @@
 <?php
 // Enable CORS
-header("Access-Control-Allow-Origin: https://your-vercel-domain.vercel.app"); // Replace with your Vercel app URL
+header("Access-Control-Allow-Origin: https://x4-esports-official.vercel.app"); // Replace with your Vercel app URL
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
