@@ -150,13 +150,13 @@
       number: document.getElementById('number').value,
       tournament: document.getElementById('tournament').value,
       isNew: document.getElementById('isNew').value,
-      referralCode: document.getElementById('refer').value || "", // Optional field
+      refer: document.getElementById('refer').value || "", // Optional field
       timestamp: new Date().toISOString(), // Add timestamp for tracking
     };
 
     try {
       // Send data to SaveTournamentData API
-      const response = await fetch('/api/SaveTournamentData.js', {
+      const response = await fetch('/api/SaveTournamentData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
