@@ -147,7 +147,7 @@
       lastName: document.getElementById('lastName').value,
       username: document.getElementById('username').value,
       email: document.getElementById('email').value,
-      whatsapp: document.getElementById('number').value,
+      number: document.getElementById('number').value,
       tournament: document.getElementById('tournament').value,
       isNew: document.getElementById('isNew').value,
       referralCode: document.getElementById('refer').value || "", // Optional field
@@ -156,7 +156,7 @@
 
     try {
       // Send data to SaveTournamentData API
-      const response = await fetch('/api/SaveTournamentData', {
+      const response = await fetch('/api/SaveTournamentData.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
