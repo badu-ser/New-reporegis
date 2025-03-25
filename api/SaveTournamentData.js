@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     try {
         const binId = '67e29bd18960c979a577fdbc';
-        const apiKey = '$2a$10$nDTGN6HF3fw9qohE1k/uV.KC6T8t4HJUxt4aOmLkN/m7ksJ9HSGvG'; // Hardcoded API Key
+        const apiKey = '$2a$10$nDTGN6HF3fw9qohE1k/uV.KC6T8t4HJUxt4aOmLkN/m7ksJ9HSGvG';
 
         // Fetch existing tournament data
         const getResponse = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`, {
@@ -24,7 +24,9 @@ export default async function handler(req, res) {
         }
 
         const jsonResponse = await getResponse.json();
-        const existingData = jsonResponse.record || [];
+        
+        // FIX: Ensure existingData is always an array
+        const existingData = Array.isArray(jsonResponse.record) ? jsonResponse.record : [];
 
         // Add new registration data
         const newData = [
@@ -37,8 +39,8 @@ export default async function handler(req, res) {
                 number,
                 tournament,
                 isNew,
-                refer: refer || "", // Ensure it’s stored correctly
-                timestamp: new Date().toISOString() // Add timestamp
+                refer: refer || "",
+                timestamp: new Date().toISOString()
             }
         ];
 
@@ -49,7 +51,7 @@ export default async function handler(req, res) {
                 'Content-Type': 'application/json',
                 'X-Master-Key': apiKey
             },
-            body: JSON.stringify({ record: newData })
+            body: JSON.stringify(newData) // Simplified structure
         });
 
         if (!putResponse.ok) {
@@ -60,6 +62,10 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error('Error:', error);
-        return res.status(500).json({ success: false, message: 'Internal server error' });
+        return res.status(500).json({ 
+            success: false, 
+            message: 'Internal server error',
+            error: error.message 
+        });
     }
-}
+                    }
