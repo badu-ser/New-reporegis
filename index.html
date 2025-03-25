@@ -138,45 +138,57 @@
       });
     </script>
     <script>
-  document.querySelector('.needs-validation').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Prevent default form submission
+ document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector('.needs-validation');
 
-    // Collect form data
-    const formData = {
-      firstName: document.getElementById('firstName').value,
-      lastName: document.getElementById('lastName').value,
-      username: document.getElementById('username').value,
-      email: document.getElementById('email').value,
-      number: document.getElementById('number').value,
-      tournament: document.getElementById('tournament').value,
-      isNew: document.getElementById('isNew').value,
-      refer: document.getElementById('refer').value || "", // Optional field
-      timestamp: new Date().toISOString(), // Add timestamp for tracking
-    };
+  if (form) {
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault(); // Prevent default form submission
 
-    try {
-      // Send data to SaveTournamentData API
-      const response = await fetch('/api/SaveTournamentData', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // Collect form data
+      const formData = {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        username: document.getElementById('username').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        number: document.getElementById('number').value.trim(),
+        tournament: document.getElementById('tournament').value,
+        isNew: document.getElementById('isNew').value,
+        refer: document.getElementById('refer').value.trim() || "", // Optional field
+        timestamp: new Date().toISOString(), // Add timestamp for tracking
+      };
 
-      const result = await response.json();
-
-      if (result.success) {
-        alert('Registration successful!');
-        window.location.reload(); // Refresh form after successful submission
-      } else {
-        alert('Registration failed. Please try again.');
+      // Simple client-side validation
+      if (!formData.firstName || !formData.lastName || !formData.username || !formData.email || !formData.number || !formData.tournament || !formData.isNew) {
+        alert("Please fill in all required fields.");
+        return;
       }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    }
-  });
+
+      try {
+        // Send data to SaveTournamentData API
+        const response = await fetch('/api/SaveTournamentData', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert('Registration successful!');
+          window.location.reload(); // Refresh form after successful submission
+        } else {
+          alert('Registration failed. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+      }
+    });
+  }
+});
       </script>
 
   </body>
