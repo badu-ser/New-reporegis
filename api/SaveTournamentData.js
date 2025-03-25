@@ -1,8 +1,8 @@
 export default async function handler(req, res) {
     if (req.method === 'POST') {
-        const { firstName, lastName, username, email, number, tournament, new, refer } = req.body;
+        const { firstName, lastName, username, email, number, tournament, isNew, refer } = req.body;
 
-        if (!firstName || !lastName || ! username || !email || !number || !tournament || !new || !refer) {
+        if (!firstName || !lastName || ! username || !email || !number || !tournament || !isNew) {
             return res.status(400).json({ success: false, message: 'Missing required fields' });
         }
 
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
             const { record: existingData = [] } = await getResponse.json();
 
             // Add new tournament registration
-            const newData = [...existingData, { firstName, lastName, username, email, number, tournament, new, refer: new Date() }];
+            const newData = [...existingData, { firstName, lastName, username, email, number, tournament, isNew, refer: new Date() }];
 
             // Save updated data
             const putResponse = await fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
