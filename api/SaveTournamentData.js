@@ -2,7 +2,8 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const { firstName, lastName, username, email, number, tournament, isNew, refer } = req.body;
 
-        if (!firstName || !lastName || ! username || !email || !number || !tournament || !isNew) {
+        // Validate required fields
+        if (!firstName || !lastName || !username || !email || !number || !tournament || isNew === undefined) {
             return res.status(400).json({ success: false, message: 'Missing required fields' });
         }
 
@@ -17,14 +18,30 @@ export default async function handler(req, res) {
 
             const { record: existingData = [] } = await getResponse.json();
 
-            // Add new tournament registration
-            const newData = [...existingData, { firstName, lastName, username, email, number, tournament, isNew, refer: new Date() }];
+            // Add new registration data
+            const newData = [
+                ...existingData,
+                {
+                    firstName,
+                    lastName,
+                    username,
+                    email,
+                    number,
+                    tournament,
+                    isNew,
+                    refer: refer || "",  // Ensure it's stored correctly
+                    timestamp: new Date().toISOString()  // Proper timestamp format
+                }
+            ];
 
             // Save updated data
             const putResponse = await fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json', 'X-Master-Key': apiKey },
-                body: JSON.stringify(newData)
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': apiKey
+                },
+                body: JSON.stringify({ record: newData })  // Corrected request structure
             });
 
             const result = await putResponse.json();
@@ -41,4 +58,4 @@ export default async function handler(req, res) {
     } else {
         return res.status(405).json({ success: false, message: 'Method not allowed' });
     }
-}
+    }
