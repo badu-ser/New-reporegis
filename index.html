@@ -107,6 +107,20 @@
                 <div class="invalid-feedback">Refer code/source details are optional.</div>
               </div>
             </div>
+            <!-- UPI Payment Section -->
+<div class="mb-3" id="paymentSection" style="display: none;">
+  <label>UPI Payment Proof</label>
+  <div class="alert alert-warning">
+    Send payment to: <strong>your-upi@id</strong><br>
+    Upload transaction screenshot below ↓
+  </div>
+  <input type="file" 
+         class="form-control" 
+         id="paymentProof" 
+         accept="image/*"
+         required>
+  <small class="text-muted">Max file size: 5MB (PNG/JPG)</small>
+</div>
 
             <hr class="mb-4">
             <div class="custom-control custom-checkbox">
@@ -138,56 +152,83 @@
       });
     </script>
     <script>
- document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   const form = document.querySelector('.needs-validation');
+  const tournamentSelect = document.getElementById('tournament');
 
-  if (form) {
-    form.addEventListener('submit', async function(event) {
-      event.preventDefault(); // Prevent default form submission
+  // Show/hide payment section based on tournament selection
+  tournamentSelect.addEventListener('change', function() {
+    const paymentSection = document.getElementById('paymentSection');
+    paymentSection.style.display = this.value ? 'block' : 'none';
+  });
 
-      // Collect form data
+  form.addEventListener('submit', async function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Basic form validation
+    if (!form.checkValidity()) {
+      alert('Please fill all required fields!');
+      return;
+    }
+
+    // Get payment screenshot file
+    const screenshotFile = document.getElementById('paymentProof').files[0];
+    
+    try {
+      // ========================
+      // STEP 1: Upload to Catbox
+      // ========================
+      const catboxForm = new FormData();
+      catboxForm.append('reqtype', 'fileupload');
+      catboxForm.append('userhash', 'e339b1462a55c686827dbd92f'); // Your Catbox ID
+      catboxForm.append('fileToUpload', screenshotFile);
+
+      const catboxResponse = await fetch('https://catbox.moe/user/api.php', {
+        method: 'POST',
+        body: catboxForm
+      });
+      
+      const screenshotUrl = await catboxResponse.text();
+
+      // ========================
+      // STEP 2: Save All Data
+      // ========================
       const formData = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName: document.getElementById('lastName').value.trim(),
-        username: document.getElementById('username').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        number: document.getElementById('number').value.trim(),
-        tournament: document.getElementById('tournament').value,
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        number: document.getElementById('number').value,
+        tournament: tournamentSelect.value,
         isNew: document.getElementById('isNew').value,
-        refer: document.getElementById('refer').value.trim() || "", // Optional field
-        timestamp: new Date().toISOString(), // Add timestamp for tracking
+        refer: document.getElementById('refer').value,
+        payment: {
+          screenshot: screenshotUrl,
+          verified: false,
+          timestamp: new Date().toISOString()
+        }
       };
 
-      // Simple client-side validation
-      if (!formData.firstName || !formData.lastName || !formData.username || !formData.email || !formData.number || !formData.tournament || !formData.isNew) {
-        alert("Please fill in all required fields.");
-        return;
+      // Save to JSONBin
+      const saveResponse = await fetch('/api/SaveTournamentData', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (saveResponse.ok) {
+        alert('Registration submitted! We will verify your payment within 24 hours.');
+        form.reset();
+      } else {
+        throw new Error('Failed to save data');
       }
 
-      try {
-        // Send data to SaveTournamentData API
-        const response = await fetch('/api/SaveTournamentData', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          alert('Registration successful!');
-          window.location.reload(); // Refresh form after successful submission
-        } else {
-          alert('Registration failed. Please try again.');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-      }
-    });
-  }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Registration failed. Please check your internet connection and try again.');
+    }
+  });
 });
       </script>
 
