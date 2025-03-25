@@ -7,8 +7,8 @@ export default async function handler(req, res) {
         }
 
         try {
-            const binId = 'YOUR_JSONBIN_BIN_ID_HERE';
-            const apiKey = 'YOUR_JSONBIN_API_KEY_HERE';
+            const binId = '67e29bd18960c979a577fdbc';
+            const apiKey = '$2a$10$nDTGN6HF3fw9qohE1k/uV.KC6T8t4HJUxt4aOmLkN/m7ksJ9HSGvG';
 
             // Fetch existing tournament data
             const getResponse = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`, {
