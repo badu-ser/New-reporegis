@@ -12,14 +12,16 @@ export default async function handler(req, res) {
 
     try {
         const binId = '67e29bd18960c979a577fdbc';
-        const apiKey = $2a$10$nDTGN6HF3fw9qohE1k/uV.KC6T8t4HJUxt4aOmLkN/m7ksJ9HSGvG;  // Use environment variable
+        const apiKey = '$2a$10$nDTGN6HF3fw9qohE1k/uV.KC6T8t4HJUxt4aOmLkN/m7ksJ9HSGvG'; // Hardcoded API Key
 
         // Fetch existing tournament data
         const getResponse = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`, {
             headers: { 'X-Master-Key': apiKey }
         });
 
-        if (!getResponse.ok) throw new Error('Failed to fetch existing data');
+        if (!getResponse.ok) {
+            throw new Error('Failed to fetch existing data');
+        }
 
         const jsonResponse = await getResponse.json();
         const existingData = jsonResponse.record || [];
@@ -35,8 +37,8 @@ export default async function handler(req, res) {
                 number,
                 tournament,
                 isNew,
-                refer: refer || "",
-                timestamp: new Date().toISOString()
+                refer: refer || "", // Ensure it’s stored correctly
+                timestamp: new Date().toISOString() // Add timestamp
             }
         ];
 
@@ -50,7 +52,9 @@ export default async function handler(req, res) {
             body: JSON.stringify({ record: newData })
         });
 
-        if (!putResponse.ok) throw new Error('Failed to save data');
+        if (!putResponse.ok) {
+            throw new Error('Failed to save data');
+        }
 
         return res.status(200).json({ success: true, message: 'Registration successful!' });
 
@@ -58,4 +62,4 @@ export default async function handler(req, res) {
         console.error('Error:', error);
         return res.status(500).json({ success: false, message: 'Internal server error' });
     }
-    }
+}
