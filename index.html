@@ -94,7 +94,7 @@
               </div>
               <div class="col-md-4 mb-3">
                 <label for="new">Are you new to X4 eSports?</label>
-                <select class="custom-select d-block w-100" id="new" name="new" required>
+                <select class="custom-select d-block w-100" id="isNew" name="isNew" required>
                   <option value="">Choose...</option>
                   <option>Yes</option>
                   <option>No</option>
@@ -149,7 +149,7 @@
       email: document.getElementById('email').value,
       whatsapp: document.getElementById('number').value,
       tournament: document.getElementById('tournament').value,
-      isNew: document.getElementById('new').value,
+      isNew: document.getElementById('isNew').value,
       referralCode: document.getElementById('refer').value || "", // Optional field
       timestamp: new Date().toISOString(), // Add timestamp for tracking
     };
