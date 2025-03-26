@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>X4 eSports India - Register</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/bootstrap4-neon-glow.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/particles.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css">
+  </head>
+  <body>
+
+    <div id="particles-js"></div>
+
+    <div class="navbar-dark text-white">
+      <div class="container">
+        <nav class="navbar px-0 navbar-expand-lg navbar-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a href="index.html" class="pl-md-0 p-3 text-light">Home</a>
+              <a href="login.html" class="p-3 text-light">Login</a>
+              <a href="registration.html" class="p-3 text-light active">Register</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container py-5 mb-5">
+      <h1 class="mb-5" style="text-align: center">Register yourself or your team for the Epic Tournament</h1>
+      <div class="row py-4">
+        <div class="col-md-8 order-md-2">
+          <h4 class="mb-3">PLAYER/TEAM INFO</h4>
+          <form class="needs-validation" novalidate  method="POST">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                <div class="invalid-feedback">Valid first name is required.</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                <div class="invalid-feedback">Valid last name is required.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username">In-game name</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">⚡</span>
+                </div>
+                <input type="text" class="form-control" id="username" name="username" required>
+                <div class="invalid-feedback">Your In-game name is required.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+              <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="number">WhatsApp number</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">+91</span>
+                </div>
+                <input type="text" class="form-control" id="number" name="number" placeholder="Valid number for future contacts!">
+                <div class="invalid-feedback">Please enter a valid WhatsApp number.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="tournament">Select Tournament</label>
+                <select class="custom-select d-block w-100" id="tournament" name="tournament" required>
+                  <option value="">Choose...</option>
+                  <option>Rs. 30 BR solo tournament</option>
+                  <option>Rs. 200 Clash Squad tournament</option>
+                  <option>Others</option>
+                </select>
+                <div class="invalid-feedback">Please select a tournament.</div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="new">Are you new to X4 eSports?</label>
+                <select class="custom-select d-block w-100" id="isNew" name="isNew" required>
+                  <option value="">Choose...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+                <div class="invalid-feedback">Please select an option.</div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="refer">Where did you hear about us? (Refer code)</label>
+                <input type="text" class="form-control" id="refer" name="refer">
+                <div class="invalid-feedback">Refer code/source details are optional.</div>
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="solemnly-swear">
+              <label class="custom-control-label" for="solemnly-swear">I am ready for the epic warfare.</label>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-outline-success btn-shadow btn-lg btn-block" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- Referral Code Autofill Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const refCode = urlParams.get("ref_id");
+        if (refCode) {
+          document.getElementById("refer").value = refCode;
+        }
+      });
+    </script>
+    <script>
+ document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector('.needs-validation');
+
+  if (form) {
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Collect form data
+      const formData = {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        username: document.getElementById('username').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        number: document.getElementById('number').value.trim(),
+        tournament: document.getElementById('tournament').value,
+        isNew: document.getElementById('isNew').value,
+        refer: document.getElementById('refer').value.trim() || "", // Optional field
+        timestamp: new Date().toISOString(), // Add timestamp for tracking
+      };
+
+      // Simple client-side validation
+      if (!formData.firstName || !formData.lastName || !formData.username || !formData.email || !formData.number || !formData.tournament || !formData.isNew) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      try {
+        // Send data to SaveTournamentData API
+        const response = await fetch('/api/SaveTournamentData', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert('Registration successful!');
+          window.location.reload(); // Refresh form after successful submission
+        } else {
+          alert('Registration failed. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+      }
+    });
+  }
+});
+      </script>
+
+  </body>
+  </html>
