@@ -143,34 +143,45 @@
     <style>/* Fix dropzone positioning */
 .dropzone {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 15px 0 !important;
-    border: 2px dashed #28a745 !important;
+    margin-top: 10px;
+    border: 2px dashed #28a745;
     background: rgba(40, 167, 69, 0.05);
     border-radius: 4px;
     min-height: 120px;
     padding: 20px;
+    width: 100%;
     transition: all 0.3s ease;
     position: relative;
+    z-index: 1;
 }
 
 .dropzone:hover {
     background: rgba(40, 167, 69, 0.1);
-    border-color: #218838 !important;
+    border-color: #218838;
 }
 
 .dropzone .info {
     color: #6c757d;
     font-size: 0.9em;
     text-align: center;
-    width: 100%;
-    padding: 0 15px;
+    width: 90%;
+}
+
+.dropzone img {
+    max-width: 50px;
+    margin-top: 10px;
+}
+
+.form-group {
+    position: relative;
+    z-index: 0;
 }
     </style>
-    <a href="https://fileinbox.com/X4-eSports-" class="fileinbox">Upload Files through fileinbox.com</a> <script type="text/javascript" src="https://fileinbox.com/embed.js"></script>
-
+    
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
