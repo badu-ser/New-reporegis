@@ -17,7 +17,13 @@ var feedback = function (res) {
     if (res.success === true) {
         var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
         document.querySelector('.status').classList.add('bg-image', 'center', 'mt-2', 'py-2');
-       var content = `<p> Payment Screenshot uploaded successfully! </p> <!-- <div style="width: 95%;">
+       var content = `<p> Payment Screenshot uploaded successfully! </p> <style>#myTab {
+    position: static !important; /* Prevents floating */
+    width: 100%; /* Ensures it stays within the container */
+}
+#myTabContent {
+    position: relative !important; /* Keeps content anchored */
+} </style> <!-- <div style="width: 95%;">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#url" role="tab" aria-controls="url" aria-selected="true">URL</a>
