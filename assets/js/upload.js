@@ -35,7 +35,7 @@ var feedback = function (res) {
             </div>
             
             </div>
-        </div>
+        </div> -->
         <hr><p><img class="img rounded mx-auto d-block" src="${get_link}" alt="Image"/></p>
         </div> -->`;
         addImg('.status', content);
