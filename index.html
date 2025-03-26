@@ -107,6 +107,17 @@
                 <div class="invalid-feedback">Refer code/source details are optional.</div>
               </div>
             </div>
+            <!-- After tournament selection -->
+<div class="mb-3" id="upiSection" style="display: none;">
+  <label>UPI Payment</label>
+  <div class="alert alert-info">
+    Send ₹<span id="paymentAmount">0</span> to <strong>your-upi-id@okbank</strong>
+    <button class="btn btn-sm btn-primary ml-2" onclick="copyUPI()">Copy UPI ID</button>
+  </div>
+  <small class="form-text text-muted">
+    Upload payment screenshot for verification
+  </small>
+</div>
 
             <hr class="mb-4">
             <div class="custom-control custom-checkbox">
@@ -190,6 +201,25 @@
   }
 });
       </script>
+    <script>// Update payment amount when tournament changes
+document.getElementById('tournament').addEventListener('change', function() {
+  const prices = {
+    'Rs. 30 BR solo tournament': 30,
+    'Rs. 200 Clash Squad tournament': 200,
+    'Others': 0
+  };
+  
+  const amount = prices[this.value];
+  document.getElementById('paymentAmount').textContent = amount;
+  document.getElementById('upiSection').style.display = amount > 0 ? 'block' : 'none';
+});
+
+// Copy UPI ID to clipboard
+function copyUPI() {
+  navigator.clipboard.writeText('your-upi-id@okbank')
+    .then(() => alert('UPI ID copied!'))
+    .catch(err => console.error('Copy failed:', err));
+}</script>
 
   </body>
   </html>
