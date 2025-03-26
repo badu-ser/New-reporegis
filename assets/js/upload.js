@@ -17,7 +17,7 @@ var feedback = function (res) {
     if (res.success === true) {
         var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
         document.querySelector('.status').classList.add('bg-image', 'center', 'mt-2', 'py-2');
-        var content = `<div style="width: 95%;">
+        var content = `<!-- <div style="width: 95%;">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#url" role="tab" aria-controls="url" aria-selected="true">URL</a>
@@ -31,7 +31,7 @@ var feedback = function (res) {
             </div>
         </div>
         <hr><p><img class="img rounded mx-auto d-block" src="${get_link}" alt="Image"/></p>
-        </div>`;
+        </div> -->`;
         addImg('.status', content);
     }
 };
