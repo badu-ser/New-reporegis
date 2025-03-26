@@ -176,7 +176,64 @@
     margin-top: 5px;
 }
     </style>
-    
+    <style>/* Ensure the container holds its child elements properly */
+.form-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Fix the preview box floating issue */
+.preview-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-top: 10px;
+    z-index: 10;
+}
+
+/* Ensure the image inside the preview stays contained */
+.preview-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+/* Ensure the URL input does not float over the image */
+.url-input {
+    position: relative;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+    z-index: 5;
+}
+
+/* Fix the submit button positioning */
+.submit-button {
+    margin-top: 15px;
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: darkgreen;
+}</style>
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
