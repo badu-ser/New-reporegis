@@ -17,7 +17,7 @@ var feedback = function (res) {
     if (res.success === true) {
         var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
         document.querySelector('.status').classList.add('bg-image', 'center', 'mt-2', 'py-2');
-        var content = `<!-- <div style="width: 95%;">
+     /*   var content = `<!-- <div style="width: 95%;">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#url" role="tab" aria-controls="url" aria-selected="true">URL</a>
@@ -34,7 +34,7 @@ var feedback = function (res) {
         </div> -->`;
         addImg('.status', content);
     }
-};
+}; */
 
 new Imgur({
     clientid: '146def7f79c7a87', //You can change this ClientID
