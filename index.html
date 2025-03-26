@@ -147,12 +147,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px; /* Moves dropzone lower */
     border: 2px dashed #28a745;
     background: rgba(40, 167, 69, 0.05);
     border-radius: 4px;
-    min-height: 120px;
-    padding: 20px;
+    min-height: 80px; /* Reduced height */
+    padding: 10px; /* Reduced padding */
     width: 100%;
     transition: all 0.3s ease;
     position: relative;
@@ -166,19 +166,14 @@
 
 .dropzone .info {
     color: #6c757d;
-    font-size: 0.9em;
+    font-size: 0.8em; /* Reduce font size slightly if needed */
     text-align: center;
     width: 90%;
 }
 
 .dropzone img {
-    max-width: 50px;
-    margin-top: 10px;
-}
-
-.form-group {
-    position: relative;
-    z-index: 0;
+    max-width: 40px; /* Reduce image size */
+    margin-top: 5px;
 }
     </style>
     
