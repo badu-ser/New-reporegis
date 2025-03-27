@@ -3,7 +3,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ success: false, message: 'Method not allowed' });
     }
 
-    const { firstName, lastName, username, email, number, tournament, isNew, refer } = req.body;
+    const { firstName, lastName, username, email, number, tournament, isNew, refer, url } = req.body;
 
     // Validate required fields
     if (!firstName || !lastName || !username || !email || !number || !tournament || !isNew) {
@@ -40,6 +40,7 @@ export default async function handler(req, res) {
                 tournament,
                 isNew,
                 refer: refer || "",
+                url,
                 timestamp: new Date().toISOString()
             }
         ];
