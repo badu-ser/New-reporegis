@@ -72,8 +72,8 @@
         createDragZone: function () {
             var p1, p2, p3, input;
             p1 = this.createEls('i', {className: 'far fa-images'});
-            p2 = this.createEls('p', {}, 'Drag and Drop your files here');
-            p3 = this.createEls('p', {}, 'or Browse in this area.');
+            p2 = this.createEls('p', {}, '📥');
+            p3 = this.createEls('p', {}, 'Upload payment screenshot.');
             input = this.createEls('input', { type: 'file', accept: '.jpg,.gif,.png,.webp', multiple: 'multiple', className: 'input' });
 
             Array.prototype.forEach.call(this.info, function (zone) {
