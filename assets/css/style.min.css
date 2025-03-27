@@ -8,3 +8,10 @@ p {
     color: white !important;
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }
+.dropzone p:first-of-type {
+    color: white !important; /* Styles the first <p> (p2) */
+}
+
+.dropzone p:last-of-type {
+    color: white !important; /* Styles the last <p> (p3) */
+}
