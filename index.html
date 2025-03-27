@@ -325,8 +325,8 @@ document.getElementById('tournament').addEventListener('change', function() {
   };
   
   const amount = prices[this.value];
-  document.getElementById('paymentAmount').textContent = amount;
-  document.getElementById('upiSection').style.display = amount = "free" ? 'block' : 'none';
+  document.getElementById('paymentAmount').textContent = isNaN(amount) ? 'Your preferred amount' : amount; 
+  document.getElementById('paymentAmount').textContent = amount;  document.getElementById('upiSection').style.display = (amount !== "free") ? 'block' : 'none';
 });
 
 // Copy UPI ID to clipboard
