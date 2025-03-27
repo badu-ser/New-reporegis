@@ -1,3 +1,16 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css");
+@import url("bootstrap.min.css");
+
+body {
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+}
+
 .dropzone {
     border: 2px dashed #1e80e8;
     transition: .3s;
@@ -42,13 +55,35 @@
     cursor: pointer;
 }
 
-.info {
-    margin-top: 10%;
-    margin-bottom: 10%;
+.status {
+    border-radius: 5px;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
-.bg-image {
-    background-color: #dfedfc !important;
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    padding: 5px;
+}
+
+/* Loading Animation */
+.loading-modal {
+    background-color: rgba(255, 255, 255, .8);
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.loading-table {
+    margin: 15% auto;
 }
 
 @media screen and (min-width: 300px) and (max-width: 700px) {
@@ -60,10 +95,20 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
     .dropzone p {
         font-size: 1em !important;
     }
-    .info {
-        margin-top: 30%;
+
+    .status {
+        width: 80%;
+        position: fixed;
+        top: 71%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .loading-table {
+        margin: 50% auto;
     }
 }
