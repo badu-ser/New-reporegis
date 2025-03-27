@@ -326,6 +326,7 @@ document.getElementById('tournament').addEventListener('change', function() {
   
   const amount = prices[this.value];
   document.getElementById('paymentAmount').textContent = isNaN(amount) ? 'Your preferred amount' : amount; 
+  paymentAmountElement.textContent = (amount === "preferred amount") ? amount : `₹${amount}`;
   document.getElementById('paymentAmount').textContent = amount;  document.getElementById('upiSection').style.display = (amount !== "free") ? 'block' : 'none';
 });
 
