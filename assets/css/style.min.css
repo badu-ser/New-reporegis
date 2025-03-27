@@ -1,8 +1,3 @@
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-@import url("https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css");
-@import url("bootstrap.min.css");
-
 body {
     font-family: 'Inter', sans-serif;
     position: relative;
