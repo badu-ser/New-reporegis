@@ -320,12 +320,14 @@ document.getElementById('tournament').addEventListener('change', function() {
   const prices = {
     'Rs. 30 BR solo tournament': 30,
     'Rs. 200 Clash Squad tournament': 200,
-    'Others': "preffered amount",
+    'Others': "preferred amount", // Fixed spelling
     'Free Tournament': "free"
   };
-  
+
   const amount = prices[this.value];
-  document.getElementById('paymentAmount').textContent = isNaN(amount) ? 'Your preferred amount' : amount; 
+  const paymentAmountElement = document.getElementById('paymentAmount'); // Define the element
+
+  // Set text content properly
   if (amount === "preferred amount") {
     paymentAmountElement.textContent = "Your preferred amount"; // No ₹ symbol for "Others"
   } else if (amount !== "free") {
@@ -333,7 +335,9 @@ document.getElementById('tournament').addEventListener('change', function() {
   } else {
     paymentAmountElement.textContent = ""; // Hide text for "Free Tournament"
   }
-  document.getElementById('paymentAmount').textContent = amount;  document.getElementById('upiSection').style.display = (amount !== "free") ? 'block' : 'none';
+
+  // Show UPI section for all except "Free Tournament"
+  document.getElementById('upiSection').style.display = (amount !== "free") ? 'block' : 'none';
 });
 
 // Copy UPI ID to clipboard
