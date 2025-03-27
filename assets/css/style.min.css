@@ -3,23 +3,24 @@
     transition: .3s;
     border-radius: 20px;
     background-color: #f1f8fe;
-    min-height: auto;
     text-align: center;
     position: relative;
     margin: 0 auto;
     max-width: 100%;
+    padding: 10px; /* Reduce padding to make it more compact */
 }
 
 .dropzone i {
     color: #1e80e8;
-    font-size: 50px;
-    margin-bottom: 5%;
+    font-size: 40px; /* Reduce icon size */
+    margin-bottom: 3%;
 }
 
 .dropzone p {
-    font-size: 1.5em;
-    font-weight: 600;
+    font-size: 1.2em; /* Reduce text size */
+    font-weight: 500; /* Make it a bit thinner */
     color: #2580e8;
+    margin: 5px 0;
 }
 
 .dropzone:hover {
@@ -47,6 +48,29 @@
     justify-content: center;
 }
 
+/* Status Message */
+.status {
+    border-radius: 5px;
+    margin: 10px auto; /* Reduce margin to bring it closer */
+    max-width: 60%; /* Reduce width further */
+    font-size: 0.8em; /* Reduce text size */
+    padding: 4px 8px; /* Adjust padding */
+    text-align: center;
+    background: #f1f8fe; /* Light background for visibility */
+    border: 1px solid #1e80e8;
+}
+
+/* Image Preview */
+.image {
+    padding: 2px;
+    max-width: 100px; /* Further reduce preview size */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 3px auto;
+    border-radius: 5px; /* Optional rounded corners */
+    border: 1px solid #ddd; /* Light border for structure */
+}
+
 /* Loading Animation */
 .loading-modal {
     background-color: rgba(255, 255, 255, .8);
@@ -60,37 +84,26 @@
 }
 
 .loading-table {
-    margin: 15% auto;
-}
-
-.status {
-    border-radius: 5px;
-    margin: 0 auto;
-    max-width: 80%; /* Reduce width */
-    font-size: 0.9em; /* Reduce text size */
-    padding: 5px 10px; /* Adjust padding */
-}
-
-.image {
-    padding: 3px;
-    max-width: 150px; /* Reduce image preview size */
-    height: auto; /* Maintain aspect ratio */
-    display: block;
-    margin: 5px auto;
+    margin: 20% auto;
 }
 
 /* Responsive adjustments */
 @media screen and (min-width: 300px) and (max-width: 700px) {
+    .dropzone {
+        font-size: 0.9em !important;
+        width: 85%; /* Make it a little smaller */
+    }
+
     .dropzone p {
         font-size: 1em !important;
     }
 
     .status {
-        width: 70%; /* Adjust width for small screens */
-        font-size: 0.8em; /* Smaller text */
+        width: 65%; /* Adjust width for small screens */
+        font-size: 0.7em; /* Smaller text */
     }
 
     .image {
-        max-width: 100px; /* Smaller preview for mobile */
+        max-width: 80px; /* Smaller preview for mobile */
     }
 }
