@@ -99,6 +99,7 @@
                   <option value="">Choose...</option>
                   <option>Rs. 30 BR solo tournament</option>
                   <option>Rs. 200 Clash Squad tournament</option>
+                  <option>Free Tournament</option>
                   <option>Others</option>
                 </select>
                 <div class="invalid-feedback">Please select a tournament.</div>
@@ -319,12 +320,13 @@ document.getElementById('tournament').addEventListener('change', function() {
   const prices = {
     'Rs. 30 BR solo tournament': 30,
     'Rs. 200 Clash Squad tournament': 200,
-    'Others': 0
+    'Others': "preffered amount",
+    'Free Tournament': "free"
   };
   
   const amount = prices[this.value];
   document.getElementById('paymentAmount').textContent = amount;
-  document.getElementById('upiSection').style.display = amount > 0 ? 'block' : 'none';
+  document.getElementById('upiSection').style.display = amount = "free" ? 'block' : 'none';
 });
 
 // Copy UPI ID to clipboard
