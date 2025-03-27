@@ -62,13 +62,22 @@
 
 /* Image Preview */
 .image {
-    padding: 2px;
-    max-width: 10px; /* Further reduce preview size */
-    height: auto; /* Maintain aspect ratio */
     display: block;
+    max-width: 100px !important; /* Forcefully limit width */
+    height: auto !important; /* Maintain aspect ratio */
     margin: 3px auto;
+    padding: 2px;
     border-radius: 5px; /* Optional rounded corners */
     border: 1px solid #ddd; /* Light border for structure */
+    object-fit: contain; /* Ensure image scales properly */
+}
+
+/* Ensure images inside .dropzone are also resized */
+.dropzone img {
+    max-width: 100px !important; /* Ensure it doesn't exceed 100px */
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Loading Animation */
