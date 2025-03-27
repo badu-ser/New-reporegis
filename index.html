@@ -123,7 +123,7 @@
 <div class="mb-3" id="upiSection" style="display: none;">
   <label>UPI Payment</label>
   <div class="alert alert-info">
-    Send ₹<span id="paymentAmount">0</span> to <strong>your-upi-id@okbank</strong>
+    Send <span id="paymentAmount">0</span> to <strong>your-upi-id@okbank</strong>
     <button class="btn btn-sm btn-primary ml-2" onclick="copyUPI()">Copy UPI ID</button>
   </div>
   <small class="form-text text-muted">
@@ -326,7 +326,13 @@ document.getElementById('tournament').addEventListener('change', function() {
   
   const amount = prices[this.value];
   document.getElementById('paymentAmount').textContent = isNaN(amount) ? 'Your preferred amount' : amount; 
-  paymentAmountElement.textContent = (amount === "preferred amount") ? amount : `₹${amount}`;
+  if (amount === "preferred amount") {
+    paymentAmountElement.textContent = "Your preferred amount"; // No ₹ symbol for "Others"
+  } else if (amount !== "free") {
+    paymentAmountElement.textContent = `₹${amount}`; // Add ₹ symbol for numeric values
+  } else {
+    paymentAmountElement.textContent = ""; // Hide text for "Free Tournament"
+  }
   document.getElementById('paymentAmount').textContent = amount;  document.getElementById('upiSection').style.display = (amount !== "free") ? 'block' : 'none';
 });
 
