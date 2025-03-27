@@ -63,7 +63,7 @@
 /* Image Preview */
 .image {
     padding: 2px;
-    max-width: 100px; /* Further reduce preview size */
+    max-width: 10px; /* Further reduce preview size */
     height: auto; /* Maintain aspect ratio */
     display: block;
     margin: 3px auto;
@@ -88,7 +88,7 @@
 }
 
 /* Responsive adjustments */
-@media screen and (min-width: 300px) and (max-width: 700px) {
+@media screen and (min-width: 50px) and (max-width: 60px) {
     .dropzone {
         font-size: 0.9em !important;
         width: 85%; /* Make it a little smaller */
@@ -104,6 +104,6 @@
     }
 
     .image {
-        max-width: 80px; /* Smaller preview for mobile */
+        max-width: 50px; /* Smaller preview for mobile */
     }
 }
