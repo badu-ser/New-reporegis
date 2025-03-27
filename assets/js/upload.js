@@ -17,7 +17,7 @@ var feedback = function (res) {
     if (res.success === true) {
         var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
         document.querySelector('.status').classList.add('bg-image', 'center', 'mt-2', 'py-2');
-       var content = `<p> Payment Screenshot uploaded successfully! </p> <style>#myTab {
+       var content = `<p style="color: black;"> Payment Screenshot uploaded successfully! </p> <style>#myTab {
     position: static !important; /* Prevents floating */
     width: 100%; /* Ensures it stays within the container */
 }
