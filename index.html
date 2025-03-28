@@ -53,8 +53,13 @@
       <html>
  <head></head>
  <body>
-  <h1 class="mb-5" style="text-align: center"> <span id="typing-text"></span><span id="blinking-space">&nbsp;</span> </h1> 
-  <script>
+  <h1 class="mb-5" style="text-align: center">
+  <span id="typing-text"></span>
+  <span id="blinking-space">&nbsp;</span>
+  <span id="cursor">|</span>
+</h1>
+
+<script>
   const text = "Register yourself or your team for the Epic Tournament";
   let index = 0;
   const speed = 50; // Typing speed in milliseconds
@@ -67,18 +72,30 @@
     }
   }
 
-  // Blinking space effect
+  // Blinking effects
   setInterval(() => {
-    const space = document.getElementById("blinking-space");
-    space.style.visibility = space.style.visibility === "hidden" ? "visible" : "hidden";
+    document.getElementById("blinking-space").classList.toggle("hidden");
+    document.getElementById("cursor").classList.toggle("hidden");
   }, 500);
 
   window.onload = typeEffect;
-</script> 
-  <style>
+</script>
+
+<style>
   #blinking-space {
     display: inline-block;
     width: 8px; /* Space width */
+    background-color: grey; /* Grey space */
+  }
+
+  #cursor {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: black;
+  }
+
+  .hidden {
+    visibility: hidden;
   }
 </style>
  </body>
