@@ -50,7 +50,39 @@
     </div>
 
     <div class="container py-5 mb-5">
-      <h1 class="mb-5" style="text-align: center">Register yourself or your team for the Epic Tournament</h1>
+      <html>
+ <head></head>
+ <body>
+  <h1 class="mb-5" style="text-align: center"> <span id="typing-text"></span><span id="blinking-space">&nbsp;</span> </h1> 
+  <script>
+  const text = "Register yourself or your team for the Epic Tournament";
+  let index = 0;
+  const speed = 50; // Typing speed in milliseconds
+
+  function typeEffect() {
+    if (index < text.length) {
+      document.getElementById("typing-text").innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeEffect, speed);
+    }
+  }
+
+  // Blinking space effect
+  setInterval(() => {
+    const space = document.getElementById("blinking-space");
+    space.style.visibility = space.style.visibility === "hidden" ? "visible" : "hidden";
+  }, 500);
+
+  window.onload = typeEffect;
+</script> 
+  <style>
+  #blinking-space {
+    display: inline-block;
+    width: 8px; /* Space width */
+  }
+</style>
+ </body>
+      </html>
       <div class="row py-4">
         <div class="col-md-8 order-md-2">
           <h4 class="mb-3">PLAYER/TEAM INFO</h4>
