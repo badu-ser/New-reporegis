@@ -67,6 +67,7 @@
                 <div class="invalid-feedback">Valid last name is required.</div>
               </div>
             </div>
+            <input type="hidden" id="url" name="url">
 
             <div class="mb-3">
               <label for="username">In-game name</label>
@@ -284,7 +285,7 @@
         tournament: document.getElementById('tournament').value,
         isNew: document.getElementById('isNew').value,
         refer: document.getElementById('refer').value.trim() || "", // Optional field
-        url: "${get_link}",
+        url: document.getElementById('url').value,
         timestamp: new Date().toISOString(), // Add timestamp for tracking
       };
 
