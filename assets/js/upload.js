@@ -16,6 +16,10 @@ var feedback = function (res) {
     reportInfo(res, true);
     if (res.success === true) {
         var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
+
+        // Store URL in hidden input field
+        document.getElementById("url").value = get_link;
+
         document.querySelector('.status').classList.add('bg-image', 'center', 'mt-2', 'py-2');
        var content = `<p style="color: black;"> Payment Screenshot uploaded successfully! </p> <style>#myTab {
     position: static !important; /* Prevents floating */
