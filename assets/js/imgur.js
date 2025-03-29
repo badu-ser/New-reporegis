@@ -92,7 +92,7 @@
             var div, table, img;
             div = this.createEls('div', { className: 'loading-modal' });
             table = this.createEls('table', { className: 'loading-table' });
-            img = this.createEls('img', { className: 'loading-image', src: './assets/images/loaderform.gif' , alt:' uploading...' , color:'black' });
+            img = this.createEls('img', { className: 'loading-image', src: './assets/images/Spinner@1x-1.0s-200px-200px (1).svg' , alt:' uploading...' , color:'black' });
 
             div.appendChild(table);
             table.appendChild(img);
